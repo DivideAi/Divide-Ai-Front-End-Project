@@ -5,7 +5,6 @@ export const Header = () =>{
     return(
         <StyledHeader>
             <img src={LogoDivideAi} alt="LogoDivideAi" />
-            <p>Oi, esse é o Divide Aí!</p>
         </StyledHeader>
     )
 }
