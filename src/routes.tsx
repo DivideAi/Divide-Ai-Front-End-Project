@@ -3,7 +3,7 @@ import { Home } from './pages/Home';
 import { Login }from './pages/Login'
 import { Register }from './pages/Register'
 import { CounterPage } from './pages/CounterPage';
-import { NamePeople } from './pages/NamePeople';
+import { NamePeople } from './pages/NamePeople/';
 import { ShareProducts } from './pages/ShareProducts';
 import { Waiter } from './pages/Waiter';
 import { SharedBill } from './pages/SharedBill';
