@@ -1,7 +1,9 @@
-export const Waiter = () =>{
-    return(
-        <div>
-            <h1>Divide Aí</h1>
-        </div>
-    )
-}
+import waiter from "../../assets/waiter.svg";
+
+export const Waiter = () => {
+  return (
+    <main>
+      <img src={waiter} alt="Waiter Icon" />
+    </main>
+  );
+};
