@@ -4,6 +4,7 @@ import App from './App';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter } from 'react-router-dom';
+import { UserProvider } from './providers/ContextUser'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,7 +24,9 @@ root.render(
       theme='light'
     />
     <BrowserRouter>
-    <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
