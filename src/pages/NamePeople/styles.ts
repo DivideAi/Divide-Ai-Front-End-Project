@@ -20,6 +20,12 @@ form{
     justify-content: center;
     flex-direction: column;
     gap: 3rem;
+
+    .buttons{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 div{
     text-align: center;
@@ -61,6 +67,7 @@ li{
         text-align: center;
     }
     }
+    
     
 }
     
