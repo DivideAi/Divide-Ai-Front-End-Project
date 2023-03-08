@@ -2,33 +2,40 @@ import { Header } from '../../components/Header';
 import Avatar1   from '../../assets/avatar1.png';
 import { StyledDiv } from './styles'
 import { useContext } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { ContextUser } from '../../providers/ContextUser';
+import { useNavigate } from 'react-router-dom';
 
-export interface iNamePeople {
-    name: string;
-}
+// interface iName {
+//     name: string
+//     preventDefault: any
+//     target: any
+//     event: any
 
+// }
 
 export const NamePeople = () =>{
     
-    const { user } = useContext(ContextUser)
+    const { user, setClient } = useContext(ContextUser)
+    const navigate = useNavigate();
 
-    const formSchema = yup.object().shape({
-        name: yup.string().required('Preencha o nome')
-    });
-
-    const {
-        register,
-        // handleSubmit,    
-    } = useForm<iNamePeople>({resolver: yupResolver(formSchema)});
 
     const namePeople = (event: any) => {
         event.preventDefault()
-       console.log(event.target.elements)
+        const response = [...event.target]
+        const arrayNamePeople = [] as string[]
+       response.forEach((element => {
+            if(element.value){
+                arrayNamePeople.push(element.value)
+            }
+        }))
 
+        setClient(arrayNamePeople)
+        navigate('/shareproducts')
+ 
+     }
+
+    const backToCounter = () =>{
+        navigate('/counterpage')
     }
     
     return(
@@ -37,19 +44,22 @@ export const NamePeople = () =>{
            <div>
                 <p>Agora preciso dos nomes de cada uma dessas pessoas</p>
            </div>
-           <form onSubmit={namePeople}>
+           <form onSubmit={(event)=> namePeople(event)}>
            <ul>
             {user.map((element => {
                 return(
                     <li key={element}>
                     <img src={Avatar1} alt="avatarPerfil" />
-                    <input type="text" placeholder="Nome"
-                     {...register('name')} />
+                    <input type="text" placeholder="Nome"/>
                 </li>
                     )
                 }))}
            </ul>
-           <button type='submit'>Continuar</button>
+           <div className='buttons'>
+            <button type='submit'>Continuar</button>
+            <button onClick={()=> backToCounter()}>Retornar</button>
+           </div>
+          
             </form>
         </StyledDiv>
     )
