@@ -47,6 +47,11 @@ ul{
     flex-direction: column;
     gap: 0.5rem;
     width: 30%;
+    cursor: pointer;
+    :hover{
+        border: solid 2px #FFFFFF;
+        padding: 10px;
+    }
 
     img{
         width: 50px;

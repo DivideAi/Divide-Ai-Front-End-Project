@@ -2,7 +2,7 @@ import { StyledForm } from './styles'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ContextUser } from '../../providers/ContextUser';
 import AllPeople from '../../assets/allpeople.png'
 
@@ -13,7 +13,11 @@ export interface iProducts {
 
 export const FormProducts = () =>{
 
-    const { products, setProducts, client } = useContext(ContextUser)
+    const { products, setProducts, client, avatar } = useContext(ContextUser)
+
+    useEffect(() => {
+        console.log(products)
+    }, [products])
 
     const formSchema = yup.object().shape({
         name: yup.string().required('Preencha qual produto foi consumido'),
@@ -28,10 +32,10 @@ export const FormProducts = () =>{
 
     const addProducts = (data: iProducts) =>{
         setProducts([...products, data])
-        console.log(products)
+        
         reset()
     }
-
+    
     return(
         <StyledForm onSubmit={handleSubmit(addProducts)}>
             <div className='inputs'>
@@ -46,8 +50,8 @@ export const FormProducts = () =>{
                 {client.map((element: string, index: number) => {
                     return(
                     <li key={element}>
-                        <img src={AllPeople} alt="Avatar1" />
-                        <p>{element[index]}</p>
+                        <img src={avatar[index]} alt="AvatarClient" />
+                        <p>{element}</p>
                     </li>
                     )
                 })}
