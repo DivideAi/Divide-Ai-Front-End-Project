@@ -1,21 +1,12 @@
 import { Header } from '../../components/Header';
-import Avatar1   from '../../assets/avatar1.png';
 import { StyledDiv } from './styles'
 import { useContext } from 'react';
 import { ContextUser } from '../../providers/ContextUser';
 import { useNavigate } from 'react-router-dom';
 
-// interface iName {
-//     name: string
-//     preventDefault: any
-//     target: any
-//     event: any
-
-// }
-
 export const NamePeople = () =>{
     
-    const { user, setClient } = useContext(ContextUser)
+    const { user, setClient, avatar } = useContext(ContextUser)
     const navigate = useNavigate();
 
 
@@ -29,7 +20,7 @@ export const NamePeople = () =>{
             }
         }))
 
-        setClient(arrayNamePeople)
+        setClient(arrayNamePeople) 
         navigate('/shareproducts')
  
      }
@@ -45,22 +36,21 @@ export const NamePeople = () =>{
                 <p>Agora preciso dos nomes de cada uma dessas pessoas</p>
            </div>
            <form onSubmit={(event)=> namePeople(event)}>
-           <ul>
-            {user.map((element => {
-                return(
+            <ul>
+                {user.map((element: number, index: number) => {
+                    return(
                     <li key={element}>
-                    <img src={Avatar1} alt="avatarPerfil" />
-                    <input type="text" placeholder="Nome"/>
-                </li>
-                    )
-                }))}
-           </ul>
-           <div className='buttons'>
-            <button type='submit'>Continuar</button>
-            <button onClick={()=> backToCounter()}>Retornar</button>
-           </div>
-          
-            </form>
+                        <img src={avatar[index]} alt="avatarPerfil" />
+                        <input type="text" placeholder="Nome"/>
+                    </li>
+                        )
+                    })}
+            </ul>
+            <div className='buttons'>
+                <button type='submit'>Continuar</button>
+                <button onClick={()=> backToCounter()}>Retornar</button>
+            </div>
+        </form>
         </StyledDiv>
     )
 }
