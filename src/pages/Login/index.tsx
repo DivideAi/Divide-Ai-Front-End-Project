@@ -1,7 +1,12 @@
+import { Header } from "../../components/Header";
+import { LoginForm } from "../../components/Forms/LoginForm"
+
+
 export const Login = () =>{
     return(
         <div>
-            <h1>Divide Aí</h1>
+            <Header/>
+            <LoginForm/>
         </div>
     )
 }
