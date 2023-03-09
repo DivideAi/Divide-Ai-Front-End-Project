@@ -5,7 +5,8 @@ export const LoginForm = () => {
 
     return(
         <StyledLoginForm>
-            <GeneralInput placeholder="se input" {} type={} error={}/>
+            {/* <GeneralInput placeholder="se input" {} type={} error={}/>
+            <GeneralInput placeholder="se input" {} type={} error={}/> */}
         </StyledLoginForm>
     )
 }
