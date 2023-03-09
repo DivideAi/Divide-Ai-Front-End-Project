@@ -6,7 +6,7 @@ interface iNavbarProps {
   logout: boolean;
   buttonText?: string;
 }
-
+//
 export const Navbar = ({ buttonText, logout }: iNavbarProps) => {
   return (
     <StyledNavbar>
