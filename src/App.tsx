@@ -1,13 +1,13 @@
 import { GlobalStyles } from './styles/global'
-import { Header } from './components/Header'
+import { Router } from './routes';
 
 function App() {
   return (
     <>
     <GlobalStyles/>
-    <Header/>
-    
+    <Router/>
     </>
+  
   );
 }
 

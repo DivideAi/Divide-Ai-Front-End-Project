@@ -8,7 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     border: none;
     list-style: none;
     text-decoration: none;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #34B9DA;
   }
   button{
@@ -16,18 +16,21 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #FFFFFF;
     border-radius: 10px;
     color: #3295AD;
+    font-weight: 700;
+    padding: 1rem 5rem;
+
   }
   p{
-    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: #FFFFFF;
     font-size: 16px;
+    line-height: 20px;
   }
   h1{
-    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: #FFFFFF;
     font-size: 50px;
+    line-height: 61px;
   }
   input{
     background-color: #34B9DA;
