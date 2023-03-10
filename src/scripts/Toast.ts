@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 
 
-export const callToast = (message: string, isError: string) => {
+export const callToast = (message: string, isError: boolean) => {
     if(isError){
         toast.error(message, {
             position: "top-center",
