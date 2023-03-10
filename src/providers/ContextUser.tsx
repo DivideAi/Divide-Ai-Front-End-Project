@@ -23,6 +23,8 @@ interface iUserProviderChildren {
     setClient: React.Dispatch<React.SetStateAction<any>>
     avatar: string[]
     logUser: (data: iLoginForm) => Promise<void>
+    consumer: string[]
+    setConsumer: React.Dispatch<React.SetStateAction<string[]>>
 
 }
 
@@ -43,6 +45,8 @@ export const UserProvider = ({ children }: iUserChildren) =>{
         Avatar1, Avatar2, Avatar3, Avatar4, Avatar5, Avatar6, Avatar7, Avatar8,
         Avatar1, Avatar2, Avatar3, Avatar4,
     ] as string[])
+    const [consumer, setConsumer] = useState([] as string[])
+
     const navigation = useNavigate();
 
     const logUser = async (data: iLoginForm) => {
@@ -67,7 +71,9 @@ export const UserProvider = ({ children }: iUserChildren) =>{
             client,
             setClient,
             avatar,
-            logUser
+            logUser,
+            consumer,
+            setConsumer
         }}
         >
             { children }
