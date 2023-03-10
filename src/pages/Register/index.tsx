@@ -1,7 +1,13 @@
+import { Header } from '../../components/Header'
+import { RegisterForm } from '../../components/Forms/RegisterForm.tsx'
+
 export const Register = () =>{
     return(
         <div>
-            <h1>Divide Aí</h1>
+            <Header/>
+            <h1>Cadastro</h1>
+            <p>Vamos lá? Preencha todos os campos abaixo. É bem rapidinho, prometo!</p>
+            <RegisterForm/>
         </div>
     )
 }
