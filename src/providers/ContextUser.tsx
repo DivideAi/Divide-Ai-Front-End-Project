@@ -12,6 +12,7 @@ import { iLoginForm } from '../components/Forms/LoginForm'
 import { api } from '../services/api'
 import { useNavigate } from 'react-router-dom'
 import { setToken } from '../scripts/localStorage'
+import { callToast } from '../scripts/Toast'
 
 interface iUserProviderChildren {
     user: number[]
@@ -48,9 +49,11 @@ export const UserProvider = ({ children }: iUserChildren) =>{
         try {
           const answer = await api.post('/login', data);
           setToken(answer.data.accessToken);
-          navigation('/counterpage');
+          callToast("Login realizado com sucesso", false);
+          setTimeout(() => {navigation('/counterpage')}, 4000)
+          
         } catch (error) {
-          console.log(error);
+            callToast("Credenciais inválidas", true);
         }
     }
     

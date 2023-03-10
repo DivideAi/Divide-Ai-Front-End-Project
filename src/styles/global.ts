@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     background-color: #34B9DA;
   }
+  
   button{
     cursor: pointer;
     background-color: #FFFFFF;
