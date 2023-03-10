@@ -13,6 +13,7 @@ import { api } from '../services/api'
 import { useNavigate } from 'react-router-dom'
 import { setToken } from '../scripts/localStorage'
 import { callToast } from '../scripts/Toast'
+import { iRegisterForm } from '../components/Forms/RegisterForm.tsx'
 
 interface iUserProviderChildren {
     user: number[]
@@ -23,6 +24,7 @@ interface iUserProviderChildren {
     setClient: React.Dispatch<React.SetStateAction<any>>
     avatar: string[]
     logUser: (data: iLoginForm) => Promise<void>
+    registerUser: (data: iRegisterForm) => Promise<void>
 
 }
 
@@ -47,15 +49,31 @@ export const UserProvider = ({ children }: iUserChildren) =>{
 
     const logUser = async (data: iLoginForm) => {
         try {
-          const answer = await api.post('/login', data);
-          setToken(answer.data.accessToken);
-          callToast("Login realizado com sucesso", false);
+          const answer = await api.post('/login', data)
+          setToken(answer.data.accessToken)
+          callToast("Login realizado com sucesso", false)
           setTimeout(() => {navigation('/counterpage')}, 4000)
           
         } catch (error) {
-            callToast("Credenciais inválidas", true);
+            callToast("Credenciais inválidas", true)
         }
     }
+
+    const registerUser = async (data: iRegisterForm) => {
+        const requestParams = {
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        };
+        try {
+          const answer = await api.post('/register', requestParams)
+          setToken(answer.data.accessToken)
+          callToast("Registro realizado com sucesso", false)
+          setTimeout(() => {navigation('/counterpage')}, 4000)
+        } catch (error) {
+            callToast("Credenciais inválidas", true)
+        }
+    };
     
     return(
         <ContextUser.Provider
@@ -67,7 +85,8 @@ export const UserProvider = ({ children }: iUserChildren) =>{
             client,
             setClient,
             avatar,
-            logUser
+            logUser,
+            registerUser
         }}
         >
             { children }

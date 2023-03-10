@@ -1,9 +1,11 @@
+import { useContext } from 'react';
 import { StyledRegisterForm } from "./styles"
 import { GeneralInput } from "../../GeneralInput"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { Link } from 'react-router-dom'
+import { ContextUser } from '../../../providers/ContextUser'
 
 export interface iRegisterForm {
     name: string;
@@ -13,6 +15,7 @@ export interface iRegisterForm {
 }
 
 export const RegisterForm = () => {
+    const { registerUser } = useContext(ContextUser);
 
     const registerSchema = yup.object().shape({
         name: yup.string().required('Nome obrigatório'),
@@ -33,7 +36,7 @@ export const RegisterForm = () => {
     })
 
     return(
-        <StyledRegisterForm onSubmit={handleSubmit(/*  */)}>
+        <StyledRegisterForm onSubmit={handleSubmit(registerUser)}>
             <GeneralInput 
             placeholder="Nome" 
             register={register("name")} 
