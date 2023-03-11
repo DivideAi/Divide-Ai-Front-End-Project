@@ -13,7 +13,7 @@ export interface iProducts {
 
 export const FormProducts = () =>{
 
-    const { products, setProducts, client, avatar } = useContext(ContextUser)
+    const { products, setProducts, client, avatar, consumer, setConsumer } = useContext(ContextUser)
 
     useEffect(() => {
         console.log(products)
@@ -28,14 +28,31 @@ export const FormProducts = () =>{
         register,
         handleSubmit, 
         reset,   
-    } = useForm<iProducts>({resolver: yupResolver(formSchema)});
+    } = useForm<iProducts>({
+        resolver: yupResolver(formSchema),
+    });
 
     const addProducts = (data: iProducts) =>{
-        setProducts([...products, data])
-        
+        const newData = {...data, consumer: consumer}
+        setProducts([...products, newData])
+        setConsumer([])
+
         reset()
     }
-    
+    const addClient = (element: string) =>{
+        const findUser = consumer.includes(element)
+        if(!findUser){
+            setConsumer([...consumer, element])
+        }
+    }
+
+    const addAll = () =>{
+        const findUsers = client.every((element: string)=> consumer.includes(element))
+        if(!findUsers){
+            setConsumer([...client])
+        }
+    }
+
     return(
         <StyledForm onSubmit={handleSubmit(addProducts)}>
             <div className='inputs'>
@@ -43,13 +60,13 @@ export const FormProducts = () =>{
                 <input type="text" placeholder="Ex: R$ 80,00" {...register('price')}/>
             </div>
             <ul>
-                <li>
+                <li onClick={addAll}>
                     <img src={AllPeople} alt="Avatar1" />
                     <p>Todos</p>
                 </li>
                 {client.map((element: string, index: number) => {
                     return(
-                    <li key={element}>
+                    <li key={element} onClick={()=> addClient(element)}>
                         <img src={avatar[index]} alt="AvatarClient" />
                         <p>{element}</p>
                     </li>
@@ -64,3 +81,5 @@ export const FormProducts = () =>{
         </StyledForm>
     )
 }
+
+
