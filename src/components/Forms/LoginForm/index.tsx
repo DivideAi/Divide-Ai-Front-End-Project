@@ -30,7 +30,7 @@ export const LoginForm = () => {
     });
 
     return(
-        <StyledLoginForm onSubmit={handleSubmit(logUser)}>
+        <StyledLoginForm onSubmit={handleSubmit(logUser) }>
             <GeneralInput 
             placeholder="Email" 
             register={register("email")} 
@@ -43,7 +43,7 @@ export const LoginForm = () => {
             type={"password"} 
             error={errors.password}
             />
-            <Link to='/register'>Vamos nos cadastrar?</Link>
+            <Link to='/register' className='link_style'>Vamos nos cadastrar?</Link>
             <button type='submit'>Entrar</button>
         </StyledLoginForm>
     )

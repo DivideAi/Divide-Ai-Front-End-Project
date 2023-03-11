@@ -6,13 +6,14 @@ interface iInputProps {
     register: UseFormRegisterReturn<string>;
     type: string;
     error: FieldError | undefined;
+
   }
 
 export const GeneralInput = ({ placeholder, register, type, error }: iInputProps) => {
 
     return(
         <>
-            <StyledInput placeholder={placeholder} {...register} type={type}/>
+            <StyledInput placeholder={placeholder} {...register} type={type} name={placeholder}/>
         {error && (
             <p color="red">{error.message}</p>
           )}
