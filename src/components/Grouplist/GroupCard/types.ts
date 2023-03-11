@@ -1,3 +1,5 @@
 export interface iGroupCardInfo {
-  example: string;
+  all?: boolean;
+  amount?: number;
+  client: string;
 }
