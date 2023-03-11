@@ -1,16 +1,20 @@
+import { useContext } from 'react';
 import { StyledLoginForm } from "./styles";
 import { GeneralInput } from "../../GeneralInput";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { ContextUser } from "../../../providers/ContextUser"
+import { Link } from 'react-router-dom'
 
 
-interface iLoginForm{
+export interface iLoginForm{
     email: string;
     password: string;
 }
 
 export const LoginForm = () => {
+    const { logUser } = useContext(ContextUser);
 
     const loginSchema = yup.object().shape({
         email: yup.string().required('E-mail obrigatório!').email('E-mail inválido!'),
@@ -26,7 +30,7 @@ export const LoginForm = () => {
     });
 
     return(
-        <StyledLoginForm onSubmit={handleSubmit(/* chamar aqui a log user */)}>
+        <StyledLoginForm onSubmit={handleSubmit(logUser)}>
             <GeneralInput 
             placeholder="Email" 
             register={register("email")} 
@@ -39,6 +43,8 @@ export const LoginForm = () => {
             type={"password"} 
             error={errors.password}
             />
+            <Link to='/register'>Vamos nos cadastrar?</Link>
+            <button type='submit'>Entrar</button>
         </StyledLoginForm>
     )
 }

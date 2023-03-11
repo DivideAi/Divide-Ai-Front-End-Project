@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   *{
@@ -12,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #34B9DA;
   }
 
+  
   button{
     cursor: pointer;
     background-color: #FFFFFF;

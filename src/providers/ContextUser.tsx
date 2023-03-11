@@ -8,6 +8,11 @@ import Avatar5 from '../assets/avatar5.svg'
 import Avatar6 from '../assets/avatar6.svg'
 import Avatar7 from '../assets/avatar7.svg'
 import Avatar8 from '../assets/avatar8.png'
+import { iLoginForm } from '../components/Forms/LoginForm'
+import { api } from '../services/api'
+import { useNavigate } from 'react-router-dom'
+import { setToken } from '../scripts/localStorage'
+import { callToast } from '../scripts/Toast'
 
 interface iUserProviderChildren {
     user: number[]
@@ -17,6 +22,9 @@ interface iUserProviderChildren {
     client: any
     setClient: React.Dispatch<React.SetStateAction<any>>
     avatar: string[]
+    logUser: (data: iLoginForm) => Promise<void>
+    consumer: string[]
+    setConsumer: React.Dispatch<React.SetStateAction<string[]>>
 
 }
 
@@ -37,6 +45,21 @@ export const UserProvider = ({ children }: iUserChildren) =>{
         Avatar1, Avatar2, Avatar3, Avatar4, Avatar5, Avatar6, Avatar7, Avatar8,
         Avatar1, Avatar2, Avatar3, Avatar4,
     ] as string[])
+    const [consumer, setConsumer] = useState([] as string[])
+
+    const navigation = useNavigate();
+
+    const logUser = async (data: iLoginForm) => {
+        try {
+          const answer = await api.post('/login', data);
+          setToken(answer.data.accessToken);
+          callToast("Login realizado com sucesso", false);
+          setTimeout(() => {navigation('/counterpage')}, 4000)
+          
+        } catch (error) {
+            callToast("Credenciais inválidas", true);
+        }
+    }
     
     return(
         <ContextUser.Provider
@@ -47,7 +70,10 @@ export const UserProvider = ({ children }: iUserChildren) =>{
             setProducts,
             client,
             setClient,
-            avatar
+            avatar,
+            logUser,
+            consumer,
+            setConsumer
         }}
         >
             { children }
