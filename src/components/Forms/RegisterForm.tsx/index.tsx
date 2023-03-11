@@ -61,7 +61,7 @@ export const RegisterForm = () => {
             type={"password"} 
             error={errors.rewritten_password}
             />
-            <Link to='/login'>Já possui uma conta?</Link>
+            <Link to='/login' className='link_style'>Já possui uma conta?</Link>
             <button>Cadastrar</button>
         </StyledRegisterForm>
     )
