@@ -5,7 +5,6 @@ interface iHeaderProps {
   description?: string;
   title?: string;
 }
-
 export const Header = (props: iHeaderProps) => {
   return (
     <StyledHeader>

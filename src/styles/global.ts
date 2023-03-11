@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     background-color: #34B9DA;
   }
+
   
   button{
     cursor: pointer;
@@ -21,18 +22,21 @@ export const GlobalStyles = createGlobalStyle`
     padding: 1rem 5rem;
 
   }
+
   p{
     font-weight: 600;
     color: #FFFFFF;
     font-size: 16px;
     line-height: 20px;
   }
+
   h1{
     font-weight: 600;
     color: #FFFFFF;
     font-size: 50px;
     line-height: 61px;
   }
+
   input{
     background-color: #34B9DA;
     border-radius: 10px;
@@ -41,8 +45,14 @@ export const GlobalStyles = createGlobalStyle`
   input:placeholder{
     padding-left: 26px;
   }
+
   dialog{
     display: unset;
     position: unset;
+  }
+
+  img.Waiter{
+    height: 120px;
+    width: 120px;
   }
 `;
