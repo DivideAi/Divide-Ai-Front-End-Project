@@ -37,7 +37,9 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #34B9DA;
     border-radius: 10px;
     border: solid 1px #FFFFFF;
-    
+  }
+  input:placeholder{
+    padding-left: 26px;
   }
   dialog{
     display: unset;
