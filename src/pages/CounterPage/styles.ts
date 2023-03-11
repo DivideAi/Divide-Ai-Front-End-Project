@@ -13,7 +13,7 @@ export const StyledDiv = styled.div`
     padding: 3rem;
     width: 60%;
     margin: 4rem auto;
-}
+    }
 
     .container-counter{
         display: flex;
