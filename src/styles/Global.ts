@@ -22,6 +22,7 @@ export const Global = createGlobalStyle`
     list-style: none;
     text-decoration: none;
     background-color: #34B9DA; ////////////////////////////////////////////////////// remover
+    font-family: 'Montserrat';
   }
 
   body {
@@ -55,10 +56,6 @@ export const Global = createGlobalStyle`
     background-color: #34B9DA;
     border-radius: 10px;
     border: solid 1px #FFFFFF;
-    
-    &::placeholder{
-      padding-left: 26px;
-    }
   }
 
   dialog{

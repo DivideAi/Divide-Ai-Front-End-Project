@@ -1,19 +1,13 @@
 import styled from 'styled-components';
+import { Main } from '../../styles/main';
 
-export const StyledDiv = styled.div`
+export const StyledMain = styled(Main)`
 display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
 gap: 3rem;
 
-@media(min-width: 640px){
-    border: 2px solid #3295AD;
-    border-radius: 10px;
-    padding: 3rem;
-    width: 60%;
-    margin: 4rem auto;
-}
 form{
     display: flex;
     align-items: center;
@@ -33,10 +27,8 @@ div{
 }
 
 ul{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     width: 100%;
 }
@@ -47,17 +39,16 @@ li{
     justify-content: center;
     flex-direction: column;
     gap: 0.5rem;
-    width: 30%;
     
 
     input{
         border: none;
-        text-align: center;
         color: #FFFFFF;
-        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 600;
         font-size: 16px;
+        width: 100%;
+        text-align: center;
         :focus{
             outline: 1px solid #34B9DA;
         }

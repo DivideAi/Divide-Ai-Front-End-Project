@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useState } from 'react';
 import { iProducts } from '../components/FormProducts';
-import Avatar1 from '../assets/avatar1.png';
-import Avatar2 from '../assets/avatar2.png';
-import Avatar3 from '../assets/avatar3.png';
-import Avatar4 from '../assets/avatar4.png';
+import Avatar1 from '../assets/avatar1.svg';
+import Avatar2 from '../assets/avatar2.svg';
+import Avatar3 from '../assets/avatar3.svg';
+import Avatar4 from '../assets/avatar4.svg';
 import Avatar5 from '../assets/avatar5.svg';
 import Avatar6 from '../assets/avatar6.svg';
 import Avatar7 from '../assets/avatar7.svg';
-import Avatar8 from '../assets/avatar8.png';
+import Avatar8 from '../assets/avatar8.svg';
 import { iLoginForm } from '../components/Forms/LoginForm';
 import { api } from '../services/api';
 import { useNavigate } from 'react-router-dom';
@@ -18,14 +18,12 @@ import { iRegisterForm } from '../components/Forms/RegisterForm.tsx';
 
 interface iUserProviderChildren {
   amountBill: number;
-  avatar: string[];
-  client: any;
-  consumer: string[];
+  arrayAvatar: string[];
+  clients: string[];
   logUser: (data: iLoginForm) => Promise<void>;
   products: iProducts[];
   registerUser: (data: iRegisterForm) => Promise<void>;
-  setClient: React.Dispatch<React.SetStateAction<any>>;
-  setConsumer: React.Dispatch<React.SetStateAction<string[]>>;
+  setClients: React.Dispatch<React.SetStateAction<string[]>>
   setProducts: React.Dispatch<React.SetStateAction<iProducts[]>>;
   setUser: React.Dispatch<React.SetStateAction<number[]>>;
   tableConsumers: iTableConsumers[];
@@ -48,8 +46,8 @@ export const ContextUser = createContext({} as iUserProviderChildren);
 export const UserProvider = ({ children }: iUserChildren) => {
   const [user, setUser] = useState([] as number[]);
   const [products, setProducts] = useState([] as iProducts[]);
-  const [client, setClient] = useState([] as any);
-  const [avatar, setAvatar] = useState([
+  const [clients, setClients] = useState([] as string[]);
+  const arrayAvatar = [
     Avatar1,
     Avatar2,
     Avatar3,
@@ -70,15 +68,14 @@ export const UserProvider = ({ children }: iUserChildren) => {
     Avatar2,
     Avatar3,
     Avatar4,
-  ] as string[]);
-  const [consumer, setConsumer] = useState([] as string[]);
+  ];
 
   const [amountBill, setAmountBill] = useState(0);
   const [tableConsumers, setTableConsumers] = useState([] as iTableConsumers[]);
 
   useEffect(() => {
     setNewTableConsumers();
-  }, [client]);
+  }, [clients]);
 
   useEffect(() => {
     if (products.length) {
@@ -88,6 +85,7 @@ export const UserProvider = ({ children }: iUserChildren) => {
       );
 
       setAmountBill(newAmountBill);
+      splitBill();
     }
   }, [products]);
 
@@ -125,11 +123,11 @@ export const UserProvider = ({ children }: iUserChildren) => {
   };
 
   const setNewTableConsumers = () => {
-    const currentClients: string[] = [...client];
+    const currentClients: string[] = [...clients];
 
     const newTableConsumers: iTableConsumers[] = currentClients.map(
       (currentClient, index) => ({
-        avatar: avatar[index],
+        avatar: arrayAvatar[index],
         billPart: 0,
         consumedProducts: [],
         name: currentClient,
@@ -139,50 +137,48 @@ export const UserProvider = ({ children }: iUserChildren) => {
     setTableConsumers(newTableConsumers);
   };
 
-  // const updateConsumedProducts = (
-  //   billPart: number,
-  //   consumedProduct: iProducts,
-  //   consumer: string
-  // ) => {
-  //   const updatedConsumers = tableConsumers.map((tableConsumer) => {
-  //     if (tableConsumer.name === consumer) {
-  //       tableConsumer.billPart = tableConsumer.billPart + billPart;
+  const updateConsumedProducts = (
+    billPart: number,
+    consumedProduct: iProducts,
+    consumer: string
+  ) => {
+    const updatedConsumers = tableConsumers.map((tableConsumer) => {
+      if (tableConsumer.name === consumer) {
+        tableConsumer.billPart = tableConsumer.billPart + billPart;
 
-  //       tableConsumer.consumedProducts = [
-  //         ...tableConsumer.consumedProducts,
-  //         consumedProduct,
-  //       ];
+        tableConsumer.consumedProducts = [
+          ...tableConsumer.consumedProducts,
+          consumedProduct,
+        ];
 
-  //       return tableConsumer;
-  //     }
-  //     return tableConsumer;
-  //   });
+        return tableConsumer;
+      }
+      return tableConsumer;
+    });
 
-  //   setTableConsumers(updatedConsumers);
-  // };
+    setTableConsumers(updatedConsumers);
+  };
 
-  // const splitBill = () => {
-  //   products.forEach((product) => {
-  //     const currentValue = product.price / product.consumer.length;
+  const splitBill = () => {
+    products.forEach((product) => {
+      const currentValue = product.price / product.consumers.length;
 
-  //     product.consumer.forEach((consumer) =>
-  //       updateConsumedProducts(currentValue, product, consumer)
-  //     );
-  //   });
-  // };
+      product.consumers.forEach((consumer) =>
+        updateConsumedProducts(currentValue, product, consumer)
+      );
+    });
+  };
 
   return (
     <ContextUser.Provider
       value={{
         amountBill,
-        avatar,
-        client,
-        consumer,
+        arrayAvatar,
+        clients,
         logUser,
         products,
         registerUser,
-        setClient,
-        setConsumer,
+        setClients,
         setProducts,
         setUser,
         tableConsumers,
