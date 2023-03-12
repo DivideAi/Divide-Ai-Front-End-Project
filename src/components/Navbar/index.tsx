@@ -1,6 +1,8 @@
-import { StyledNavbar } from "./styles";
-import logo from "../../assets/Logo Header.png";
-import logoutIcon from "../../assets/logout-icon.png";
+import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/Logo Header.png';
+import logoutIcon from '../../assets/logout-icon.png';
+import { removeToken } from '../../scripts/localStorage';
+import { StyledNavbar } from './styles';
 
 interface iNavbarProps {
   logout: boolean;
@@ -8,12 +10,22 @@ interface iNavbarProps {
 }
 //
 export const Navbar = ({ buttonText, logout }: iNavbarProps) => {
+  const navigate = useNavigate();
+
+  const logoff = () => {
+    removeToken();
+    navigate('/');
+  };
+
   return (
     <StyledNavbar>
-      <img className="logo-image" src={logo} alt="Logo Divide  Aí" />
+      <img className='logo-image' src={logo} alt='Logo Divide  Aí' />
 
-      <button className={`nav-button${logout ? " logout" : ""}`}>
-        {logout ? <img src={logoutIcon} alt="Logout Button" /> : buttonText}
+      <button
+        className={`nav-button${logout ? ' logout' : ''}`}
+        onClick={logoff}
+      >
+        {logout ? <img src={logoutIcon} alt='Logout Button' /> : buttonText}
       </button>
     </StyledNavbar>
   );
