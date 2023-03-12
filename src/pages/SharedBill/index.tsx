@@ -6,11 +6,13 @@ import { SharedBillMain } from './styles';
 
 export const SharedBill = () => {
   return (
-    <SharedBillMain>
+    <>
       <Navbar logout />
-      <Header />
-      <GroupList />
-      <NextButton to={'/'}>Nova divisão</NextButton>
-    </SharedBillMain>
+      <SharedBillMain>
+        <Header />
+        <GroupList />
+        <NextButton to={'/'}>Nova divisão</NextButton>
+      </SharedBillMain>
+    </>
   );
 };
