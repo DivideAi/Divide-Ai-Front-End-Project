@@ -1,4 +1,6 @@
 import { useContext } from 'react';
+import iconAll from '../../assets/Group/all.svg';
+
 import { ContextUser } from '../../providers/ContextUser';
 import { GroupCard } from './GroupCard';
 import { StyledGroupList } from './styles';
@@ -8,11 +10,17 @@ export const GroupList = () => {
 
   return (
     <StyledGroupList>
-      <GroupCard all amount={amountBill} client='banana' />
-      <GroupCard client='banana' amount={20} />
-      {tableConsumers ? (
-        <GroupCard key={crypto.randomUUID()} client='paçoca' amount={10} />
-      ) : null}
+      <GroupCard all amount={amountBill} avatar={iconAll} />
+      {tableConsumers
+        ? tableConsumers.map((tableConsumer) => (
+            <GroupCard
+              key={crypto.randomUUID()}
+              amount={tableConsumer.billPart}
+              avatar={tableConsumer.avatar}
+              name={tableConsumer.name}
+            />
+          ))
+        : null}
     </StyledGroupList>
   );
 };
