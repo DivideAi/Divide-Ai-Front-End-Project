@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledNavbar = styled.nav`
   display: flex;
   justify-content: flex-end;
   padding: 35px !important;
+  width: 100%;
 
   & > img.logo-image {
     display: none;
