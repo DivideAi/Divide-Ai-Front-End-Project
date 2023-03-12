@@ -7,12 +7,11 @@ interface iMainProps {
 export const Main = styled.main<iMainProps>`
   & {
     @media screen and (min-width: 640px) {
-      border: 2px solid
-        ${(props) => (props ? props.BorderColor : 'var(--primary-50)')};
+      border: 2px solid var(--primary-50);
       border-radius: 10px;
       padding: 60px;
       width: 60%;
-      margin: 4rem auto;
+      margin: 2rem auto;
     }
   }
 `;

@@ -4,7 +4,8 @@ import Right from '../../assets/rigth.png'
 import { ContextUser } from '../../providers/ContextUser'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { StyledDiv } from './styles'
+import { StyledMain } from './styles'
+import { Navbar } from '../../components/Navbar'
 
 export const CounterPage = () =>{
     const navigate = useNavigate();
@@ -32,7 +33,9 @@ export const CounterPage = () =>{
     }
 
     return(
-        <StyledDiv>
+      <>
+        <Navbar logout/>
+        <StyledMain>
             <Header/>
             <div className='container-counter'>
                 <p>Para começar, eu preciso saber o número de pessoas da mesa:</p>
@@ -44,6 +47,7 @@ export const CounterPage = () =>{
                 <p>*Limite máximo de 20 pessoas</p>
                 <button onClick={()=> counterPeople()}>Continuar</button>
            </div>
-        </StyledDiv>
+        </StyledMain>
+        </>
     )
 }

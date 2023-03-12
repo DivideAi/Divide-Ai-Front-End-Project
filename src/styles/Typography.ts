@@ -4,6 +4,7 @@ const defaultText = css`
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   text-align: center;
+  color: var(--grey-0);
 `;
 
 export const Typography = createGlobalStyle`
@@ -23,12 +24,10 @@ export const Typography = createGlobalStyle`
 
   .Body-600 {
     ${defaultText}
-    font-weight: 400;
     font-size: calc(16rem/16);
   }
   .Body-small {
     ${defaultText}
-    font-weight: 600;
     font-size: calc(12rem/16);
   }
 `;

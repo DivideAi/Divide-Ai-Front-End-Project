@@ -1,12 +1,13 @@
 import { Header } from '../../components/Header';
-import { StyledDiv } from './styles'
+import { StyledMain } from './styles'
 import { useContext } from 'react';
 import { ContextUser } from '../../providers/ContextUser';
 import { useNavigate } from 'react-router-dom';
+import { Navbar } from '../../components/Navbar';
 
 export const NamePeople = () =>{
     
-    const { user, setClient, avatar } = useContext(ContextUser)
+    const { user, setClients, arrayAvatar } = useContext(ContextUser)
     const navigate = useNavigate();
 
 
@@ -20,7 +21,7 @@ export const NamePeople = () =>{
             }
         }))
 
-        setClient(arrayNamePeople) 
+        setClients(arrayNamePeople) 
         navigate('/shareproducts')
  
      }
@@ -30,17 +31,16 @@ export const NamePeople = () =>{
     }
     
     return(
-        <StyledDiv>
-           <Header/>
-           <div>
-                <p>Agora preciso dos nomes de cada uma dessas pessoas</p>
-           </div>
+      <>
+      <Navbar logout/>
+        <StyledMain>
+           <Header description='Agora preciso dos nomes de cada uma dessas pessoas'/>
            <form onSubmit={(event)=> namePeople(event)}>
             <ul>
                 {user.map((element: number, index: number) => {
                     return(
                     <li key={element}>
-                        <img src={avatar[index]} alt="avatarPerfil" />
+                        <img src={arrayAvatar[index]} alt="avatarPerfil" />
                         <input type="text" placeholder="Nome"/>
                     </li>
                         )
@@ -51,6 +51,7 @@ export const NamePeople = () =>{
                 <button onClick={()=> backToCounter()}>Retornar</button>
             </div>
         </form>
-        </StyledDiv>
+        </StyledMain>
+        </>
     )
 }
