@@ -21,7 +21,7 @@ export const Global = createGlobalStyle`
     border: none;
     list-style: none;
     text-decoration: none;
-    background-color: #34B9DA; ////////////////////////////////////////////////////// remover
+    background-color: var(--primary); ////////////////////////////////////////////////////// remover
     font-family: 'Montserrat';
   }
 
@@ -31,7 +31,7 @@ export const Global = createGlobalStyle`
 
   button{
     cursor: pointer;
-    background-color: #FFFFFF;
+    background-color: var(--grey-0);
     border-radius: 10px;
     color: #3295AD;
     font-weight: 700;
@@ -40,22 +40,22 @@ export const Global = createGlobalStyle`
 
   p{
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--grey-0);
     font-size: 16px;
     line-height: 20px;
   }
 
   h1{
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--grey-0);
     font-size: 50px;
     line-height: 61px;
   }
 
   input{
-    background-color: #34B9DA;
+    background-color: var(--primary);
     border-radius: 10px;
-    border: solid 1px #FFFFFF;
+    border: solid 1px var(--grey-0);
   }
 
   dialog{

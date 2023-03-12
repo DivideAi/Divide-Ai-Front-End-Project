@@ -1,12 +1,12 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const NextButton = styled(Link)`
   & {
-    background: #ffffff;
-    border: 1px solid #ffffff;
+    background: var(--grey-0);
+    border: 1px solid var(--grey-0);
     border-radius: 10px;
-    color: #3295ad;
+    color: var(--primary-50);
 
     font-weight: 700;
     font-size: calc(18rem / 16);

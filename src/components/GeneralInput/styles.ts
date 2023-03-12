@@ -1,19 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledInput = styled.input`
-    border: 1px solid #FFFFFF;
-    border-radius: 10px;
-    padding: 1rem 2rem;
-    color: #FFFFFF;
+  border: 1px solid var(--grey-0);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  color: var(--grey-0);
+  text-align: start;
+
+  ::placeholder {
     text-align: start;
+    color: var(--grey-0);
+  }
 
-    ::placeholder{
-        text-align: start;
-        color: #FFFFFF;
-    }
-
-    :focus{
-        outline: 1px solid #FFFFFF;
-    }
-
+  :focus {
+    outline: 1px solid var(--grey-0);
+  }
 `;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledGroupCard = styled.li`
   & {
@@ -10,8 +10,13 @@ export const StyledGroupCard = styled.li`
 
   & > div.person-info {
     display: flex;
+    align-items: center;
     flex-flow: column nowrap;
     gap: 5px;
+
+    text-align: center;
+
+    width: 100px;
 
     img.person-info__icon {
       height: 52px;
@@ -21,8 +26,8 @@ export const StyledGroupCard = styled.li`
 
   & > div.value-place {
     align-self: flex-start;
-    background: #fff !important;
-    border: solid 1px #3295ad;
+    background: var(--grey-0) !important;
+    border: solid 1px var(--primary-50);
     border-radius: 12px;
 
     text-align: center;
@@ -35,7 +40,7 @@ export const StyledGroupCard = styled.li`
 
     p.value {
       background: none;
-      color: #3295ad !important;
+      color: var(--primary-50) !important;
     }
   }
 `;

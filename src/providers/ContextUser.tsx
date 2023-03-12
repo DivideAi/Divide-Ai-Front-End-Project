@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useState } from 'react';
-import { iProducts } from '../components/FormProducts';
+import { useNavigate } from 'react-router-dom';
 import Avatar1 from '../assets/avatar1.svg';
 import Avatar2 from '../assets/avatar2.svg';
 import Avatar3 from '../assets/avatar3.svg';
@@ -9,22 +9,25 @@ import Avatar5 from '../assets/avatar5.svg';
 import Avatar6 from '../assets/avatar6.svg';
 import Avatar7 from '../assets/avatar7.svg';
 import Avatar8 from '../assets/avatar8.svg';
+import { iProducts } from '../components/FormProducts';
 import { iLoginForm } from '../components/Forms/LoginForm';
-import { api } from '../services/api';
-import { useNavigate } from 'react-router-dom';
+import { iRegisterForm } from '../components/Forms/RegisterForm.tsx';
 import { setToken } from '../scripts/localStorage';
 import { callToast } from '../scripts/Toast';
-import { iRegisterForm } from '../components/Forms/RegisterForm.tsx';
+import { api } from '../services/api';
 
 interface iUserProviderChildren {
   amountBill: number;
   arrayAvatar: string[];
+  clearConsumedProducts: () => void;
   clients: string[];
+  incrementServiceFee: () => void;
   logUser: (data: iLoginForm) => Promise<void>;
   products: iProducts[];
   registerUser: (data: iRegisterForm) => Promise<void>;
-  setClients: React.Dispatch<React.SetStateAction<string[]>>
+  setClients: React.Dispatch<React.SetStateAction<string[]>>;
   setProducts: React.Dispatch<React.SetStateAction<iProducts[]>>;
+  splitBill: () => void;
   setUser: React.Dispatch<React.SetStateAction<number[]>>;
   tableConsumers: iTableConsumers[];
   user: number[];
@@ -44,9 +47,12 @@ interface iTableConsumers {
 export const ContextUser = createContext({} as iUserProviderChildren);
 
 export const UserProvider = ({ children }: iUserChildren) => {
-  const [user, setUser] = useState([] as number[]);
-  const [products, setProducts] = useState([] as iProducts[]);
+  const [amountBill, setAmountBill] = useState(0);
   const [clients, setClients] = useState([] as string[]);
+  const [products, setProducts] = useState([] as iProducts[]);
+  const [tableConsumers, setTableConsumers] = useState([] as iTableConsumers[]);
+  const [user, setUser] = useState([] as number[]);
+
   const arrayAvatar = [
     Avatar1,
     Avatar2,
@@ -70,9 +76,6 @@ export const UserProvider = ({ children }: iUserChildren) => {
     Avatar4,
   ];
 
-  const [amountBill, setAmountBill] = useState(0);
-  const [tableConsumers, setTableConsumers] = useState([] as iTableConsumers[]);
-
   useEffect(() => {
     setNewTableConsumers();
   }, [clients]);
@@ -80,12 +83,11 @@ export const UserProvider = ({ children }: iUserChildren) => {
   useEffect(() => {
     if (products.length) {
       const newAmountBill = products.reduce(
-        (acc, product) => acc + product.price,
+        (acc, product) => acc + Number(product.price),
         0
       );
 
       setAmountBill(newAmountBill);
-      splitBill();
     }
   }, [products]);
 
@@ -122,6 +124,30 @@ export const UserProvider = ({ children }: iUserChildren) => {
     }
   };
 
+  const clearConsumedProducts = () => {
+    const updatedConsumers = tableConsumers.map((tableConsumer) => {
+      tableConsumer.consumedProducts = [];
+      return tableConsumer;
+    });
+
+    setTableConsumers(updatedConsumers);
+  };
+
+  const incrementServiceFee = () => {
+    const serviceFee = amountBill * (10 / 100);
+    const partialServiceFee = serviceFee / tableConsumers.length;
+    setAmountBill(amountBill + serviceFee);
+
+    console.log(serviceFee);
+
+    const updatedTableConsumers = tableConsumers.map((currentConsumer) => {
+      currentConsumer.billPart = currentConsumer.billPart + partialServiceFee;
+      return currentConsumer;
+    });
+
+    setTableConsumers(updatedTableConsumers);
+  };
+
   const setNewTableConsumers = () => {
     const currentClients: string[] = [...clients];
 
@@ -137,6 +163,17 @@ export const UserProvider = ({ children }: iUserChildren) => {
     setTableConsumers(newTableConsumers);
   };
 
+  const splitBill = () => {
+    products.forEach((product) => {
+      const currentValue = product.price / product.consumers.length;
+      console.log('context ==>', product);
+
+      product.consumers.forEach((consumer) =>
+        updateConsumedProducts(currentValue, product, consumer)
+      );
+    });
+  };
+
   const updateConsumedProducts = (
     billPart: number,
     consumedProduct: iProducts,
@@ -145,12 +182,10 @@ export const UserProvider = ({ children }: iUserChildren) => {
     const updatedConsumers = tableConsumers.map((tableConsumer) => {
       if (tableConsumer.name === consumer) {
         tableConsumer.billPart = tableConsumer.billPart + billPart;
-
         tableConsumer.consumedProducts = [
           ...tableConsumer.consumedProducts,
           consumedProduct,
         ];
-
         return tableConsumer;
       }
       return tableConsumer;
@@ -159,31 +194,25 @@ export const UserProvider = ({ children }: iUserChildren) => {
     setTableConsumers(updatedConsumers);
   };
 
-  const splitBill = () => {
-    products.forEach((product) => {
-      const currentValue = product.price / product.consumers.length;
-
-      product.consumers.forEach((consumer) =>
-        updateConsumedProducts(currentValue, product, consumer)
-      );
-    });
-  };
-
   return (
     <ContextUser.Provider
       value={{
         amountBill,
         arrayAvatar,
+        clearConsumedProducts,
         clients,
+        incrementServiceFee,
         logUser,
         products,
         registerUser,
         setClients,
         setProducts,
         setUser,
+        splitBill,
         tableConsumers,
         user,
-      }}>
+      }}
+    >
       {children}
     </ContextUser.Provider>
   );
