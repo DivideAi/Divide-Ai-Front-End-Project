@@ -1,6 +1,19 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
+export const Global = createGlobalStyle`
+  :root {
+    --primary: #34B9DA;
+    --primary-50: #3295AD;
+
+    --grey-50: #AFACAC;
+    --grey-0: #FFFFFF;
+
+    --sucess: #55E655;
+    --negative: #E65555;
+    --information: #FFDD55;
+    --warning: #155BCB;
+  }
+
   *{
     box-sizing: border-box;
     margin: 0;
@@ -8,11 +21,13 @@ export const GlobalStyles = createGlobalStyle`
     border: none;
     list-style: none;
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #34B9DA;
+    background-color: #34B9DA; ////////////////////////////////////////////////////// remover
   }
 
-  
+  body {
+    background: var(--primary);
+  }
+
   button{
     cursor: pointer;
     background-color: #FFFFFF;
@@ -20,7 +35,6 @@ export const GlobalStyles = createGlobalStyle`
     color: #3295AD;
     font-weight: 700;
     padding: 1rem 5rem;
-
   }
 
   p{
@@ -41,9 +55,10 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #34B9DA;
     border-radius: 10px;
     border: solid 1px #FFFFFF;
-  }
-  input:placeholder{
-    padding-left: 26px;
+    
+    &::placeholder{
+      padding-left: 26px;
+    }
   }
 
   dialog{
