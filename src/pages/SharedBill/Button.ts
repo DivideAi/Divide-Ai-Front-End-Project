@@ -15,5 +15,8 @@ export const NextButton = styled(Link)`
     padding: 16px 0;
     max-width: 100%;
     width: 320px;
+    @media(min-width: 640px){
+        max-width: 320px;
+    }
   }
 `;

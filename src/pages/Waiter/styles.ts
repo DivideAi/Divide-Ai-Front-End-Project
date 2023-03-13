@@ -43,6 +43,9 @@ export const StyledMain = styled(Main)`
         border-right: solid 1px var(--grey-0);
         border-radius: 6px 0px 0px 6px !important;
       }
+      @media(min-width: 640px){
+        max-width: 320px;
+    }
     }
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { GroupList } from '../../components/Grouplist';
 import { Header } from '../../components/Header';
