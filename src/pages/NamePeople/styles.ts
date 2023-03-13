@@ -1,75 +1,67 @@
 import styled from 'styled-components';
+import { Main } from '../../styles/main';
 
-export const StyledDiv = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-gap: 3rem;
+export const StyledMain = styled(Main)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
 
-@media(min-width: 640px){
-    border: 2px solid #3295AD;
-    border-radius: 10px;
-    padding: 3rem;
-    width: 60%;
-    margin: 4rem auto;
-}
-form{
+  form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 3rem;
+    width: 100%;
 
-    .buttons{
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+
+      @media(min-width: 640px){
+        max-width: 320px;
     }
-}
-div{
+  }
+  div {
     text-align: center;
-    padding: 1rem 5rem;
-}
+  }
 
-ul{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     width: 100%;
-}
+    justify-items: center;
+  }
 
-li{
+  li {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 0.5rem;
-    width: 30%;
-    
 
-    input{
-        border: none;
+    input {
+      border: none;
+      color: var(--grey-0);
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      width: 100%;
+      text-align: center;
+      :focus {
+        outline: 1px solid var(--primary);
+      }
+
+      ::placeholder {
+        color: var(--grey-0);
         text-align: center;
-        color: #FFFFFF;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        :focus{
-            outline: 1px solid #34B9DA;
-        }
-        
-    ::placeholder{
-        color: #FFFFFF;
-        text-align: center;
+      }
     }
-    }
-    
-    
+  }
 }
-    
-
-`
+`;

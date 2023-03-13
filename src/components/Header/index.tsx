@@ -5,7 +5,6 @@ interface iHeaderProps {
   description?: string;
   title?: string;
 }
-
 export const Header = (props: iHeaderProps) => {
   return (
     <StyledHeader>
@@ -13,7 +12,7 @@ export const Header = (props: iHeaderProps) => {
       {props.title ? (
         <h1 className='header-title Title1'>{props.title}</h1>
       ) : null}
-      <p className='header-description'>{props.description}</p>
+      <p className='header-description Body-600'>{props.description}</p>
     </StyledHeader>
   );
 };

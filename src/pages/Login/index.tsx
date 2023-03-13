@@ -3,6 +3,7 @@ import { Header } from '../../components/Header'
 import { LoginForm } from '../../components/Forms/LoginForm'
 import { useNavigate } from 'react-router-dom'
 import { isLogged } from '../../scripts/localStorage'
+import { StyledLoginPage } from './styles'
 
 export const Login = () =>{
     const navigation = useNavigate()
@@ -14,13 +15,9 @@ export const Login = () =>{
     }, [])
 
     return(
-        <>
-            <Header/>
-            <h1>Login</h1>
-            <p>
-                Agora é só preencher os dados e dividir sua conta!
-            </p>
+        <StyledLoginPage>
+            <Header title='Login' description='Agora é só preencher os dados e dividir sua conta!'/>
             <LoginForm/>
-        </>
+        </StyledLoginPage>
     )
 }

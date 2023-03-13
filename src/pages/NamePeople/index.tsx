@@ -1,13 +1,24 @@
+import { useEffect } from 'react';
 import { Header } from '../../components/Header';
-import { StyledDiv } from './styles'
+import { StyledMain } from './styles'
 import { useContext } from 'react';
 import { ContextUser } from '../../providers/ContextUser';
 import { useNavigate } from 'react-router-dom';
+import { Navbar } from '../../components/Navbar';
+import { callToast } from '../../scripts/Toast';
+import { isLogged } from '../../scripts/localStorage';
+
 
 export const NamePeople = () =>{
     
-    const { user, setClient, avatar } = useContext(ContextUser)
+    const { user, setClients, arrayAvatar } = useContext(ContextUser)
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isLogged()) {
+            navigate(-1);
+        }
+    }, [])
 
 
     const namePeople = (event: any) => {
@@ -20,27 +31,31 @@ export const NamePeople = () =>{
             }
         }))
 
-        setClient(arrayNamePeople) 
-        navigate('/shareproducts')
+        setClients(arrayNamePeople) 
+
+          if(arrayNamePeople.length === user.length){
+            navigate('/shareproducts')
+          } else {
+            callToast('Preencha os nomes de todos dos usuários', true)
+          }
+      }
  
-     }
 
     const backToCounter = () =>{
         navigate('/counterpage')
     }
     
     return(
-        <StyledDiv>
-           <Header/>
-           <div>
-                <p>Agora preciso dos nomes de cada uma dessas pessoas</p>
-           </div>
+      <>
+      <Navbar logout/>
+        <StyledMain>
+           <Header description='Agora preciso dos nomes de cada uma dessas pessoas'/>
            <form onSubmit={(event)=> namePeople(event)}>
             <ul>
                 {user.map((element: number, index: number) => {
                     return(
                     <li key={element}>
-                        <img src={avatar[index]} alt="avatarPerfil" />
+                        <img src={arrayAvatar[index]} alt="avatarPerfil" />
                         <input type="text" placeholder="Nome"/>
                     </li>
                         )
@@ -51,6 +66,7 @@ export const NamePeople = () =>{
                 <button onClick={()=> backToCounter()}>Retornar</button>
             </div>
         </form>
-        </StyledDiv>
+        </StyledMain>
+        </>
     )
 }
