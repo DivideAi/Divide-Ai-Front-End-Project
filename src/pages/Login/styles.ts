@@ -16,3 +16,4 @@ export const StyledLoginPage = styled(Main)`
         margin: 0 auto;
     }
 `
+

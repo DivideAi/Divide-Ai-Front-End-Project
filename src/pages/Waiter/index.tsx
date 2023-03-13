@@ -1,14 +1,23 @@
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import waiter from '../../assets/waiter.svg';
-import { Header } from '../../components/Header';
-import { Navbar } from '../../components/Navbar';
-import { ContextUser } from '../../providers/ContextUser';
-import { NextButton, PreviousButton } from './buttons';
-import { StyledMain } from './styles';
+import { useEffect } from 'react'
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import waiter from '../../assets/waiter.svg'
+import { Header } from '../../components/Header'
+import { Navbar } from '../../components/Navbar'
+import { ContextUser } from '../../providers/ContextUser'
+import { NextButton, PreviousButton } from './buttons'
+import { StyledMain } from './styles'
+import { isLogged } from '../../scripts/localStorage'
 
 export const Waiter = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLogged()) {
+      navigate(-1)
+    }
+  }, [])
+
   const { clearConsumedProducts, incrementServiceFee } =
     useContext(ContextUser);
 

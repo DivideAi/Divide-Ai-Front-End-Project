@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Header } from '../../components/Header';
 import { StyledMain } from './styles'
 import { useContext } from 'react';
@@ -5,11 +6,19 @@ import { ContextUser } from '../../providers/ContextUser';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../../components/Navbar';
 import { callToast } from '../../scripts/Toast';
+import { isLogged } from '../../scripts/localStorage';
+
 
 export const NamePeople = () =>{
     
     const { user, setClients, arrayAvatar } = useContext(ContextUser)
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isLogged()) {
+            navigate(-1);
+        }
+    }, [])
 
 
     const namePeople = (event: any) => {
