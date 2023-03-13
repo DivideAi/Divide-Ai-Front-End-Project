@@ -10,6 +10,8 @@ export const Main = styled.main`
       padding: 60px;
       width: 60%;
       margin: 2rem auto;
+
+      
     }
   }
 `;

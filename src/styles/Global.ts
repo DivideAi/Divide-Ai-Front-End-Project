@@ -49,10 +49,26 @@ export const Global = createGlobalStyle`
     line-height: 61px;
   }
 
+  form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 600px;
+  }
+
   input{
     background-color: var(--primary);
     border-radius: 10px;
     border: solid 1px var(--grey-0);
+    width: 100%;
+    max-width: 320px;
+
+
+    /* @media(min-width: 640px){
+        max-width: 320px !important;
+      
+    } */
   }
 
   dialog{

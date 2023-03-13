@@ -13,7 +13,6 @@ export const StyledHomePage = styled(Main)`
 
   p {
     display: block;
-    width: 240px;
     margin: 0 auto;
     padding-top: 60px;
     margin-bottom: 70px;
