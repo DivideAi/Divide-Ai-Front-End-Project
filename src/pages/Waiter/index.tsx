@@ -55,11 +55,11 @@ export const Waiter = () => {
         </div>
 
         <div className='page-buttons'>
-          <PreviousButton className='Title3' onClick={back}>
+          <PreviousButton className='Link' onClick={back}>
             Anterior
           </PreviousButton>
 
-          <NextButton className='Title3' to={'/sharedbill'}>
+          <NextButton className='Link' to={'/sharedbill'}>
             Continuar
           </NextButton>
         </div>

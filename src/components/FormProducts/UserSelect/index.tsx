@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react"
 import { iTableConsumers } from "../../../providers/ContextUser"
 import { UserSelectStyled } from './styles'
