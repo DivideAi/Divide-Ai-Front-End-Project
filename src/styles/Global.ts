@@ -28,13 +28,15 @@ export const Global = createGlobalStyle`
     background: var(--primary);
   }
 
-  button{
+  button, .Link{
     cursor: pointer;
     background-color: var(--grey-0);
     border-radius: 10px;
     color: var(--primary-50);
     font-weight: 700;
+    font-size: calc(13rem/16);
     padding: 1rem 5rem;
+    text-align: center;
   }
 
   p{
@@ -63,17 +65,6 @@ export const Global = createGlobalStyle`
     border: solid 1px var(--grey-0);
     width: 100%;
     max-width: 320px;
-
-
-    /* @media(min-width: 640px){
-        max-width: 320px !important;
-      
-    } */
-  }
-
-  dialog{
-    display: unset;
-    position: unset;
   }
 
   img.Waiter{

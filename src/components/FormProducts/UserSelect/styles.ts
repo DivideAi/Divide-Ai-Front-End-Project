@@ -16,9 +16,7 @@ export const UserSelectStyled = styled.li <iUserSelectStyledProps>`
       padding: 10px;
       width: 30%;
       cursor: pointer;
-      /* :hover {
-        border-color: var(--grey-0);
-      } */
+      
       img {
         width: 50px;
         height: 50px;
