@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { Main } from '../../styles/main';
 
-export const StyledHomePage = styled.main`
+export const StyledHomePage = styled(Main)`
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
+  
 
   @media (min-width: 640px) {
     border: 2px solid #3295ad;

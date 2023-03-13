@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Main } from '../../styles/main'
 
-export const StyledRegisterPage = styled.main`
+export const StyledRegisterPage = styled(Main)`
     dislplay: flex;
     h1{
         text-align-last: center;
