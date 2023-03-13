@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Avatar1 from '../assets/avatar1.svg';

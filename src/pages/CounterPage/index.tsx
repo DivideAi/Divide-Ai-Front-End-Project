@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { Header } from '../../components/Header'
 import Left from '../../assets/left.png'
 import Right from '../../assets/rigth.png'

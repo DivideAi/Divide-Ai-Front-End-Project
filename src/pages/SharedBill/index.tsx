@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { GroupList } from '../../components/Grouplist';
 import { Header } from '../../components/Header';
@@ -23,7 +22,7 @@ export const SharedBill = () => {
       <SharedBillMain>
         <Header description='Prontinho, abaixo está o valor total da conta e também o valor de cada pessoa'/>
         <GroupList />
-        <NextButton to={'/counterpage'}>Nova divisão</NextButton>
+        <NextButton to={'/counterpage'} className='Link'>Nova divisão</NextButton>
       </SharedBillMain>
     </>
   );

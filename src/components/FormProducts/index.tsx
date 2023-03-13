@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useContext, useState } from 'react';
 import { ContextUser } from '../../providers/ContextUser';
-// import AllPeople from '../../assets/allpeople.png';
 import { useNavigate } from 'react-router-dom';
 import { UserSelect } from './UserSelect';
 import { callToast } from '../../scripts/Toast';
@@ -41,7 +40,13 @@ export const FormProducts = () => {
     const newData = { ...data, consumers: consumers };
     setProducts([...products, newData]);
     setConsumers([]);
-    callToast('Produto adicionado com sucesso', false)
+    if(consumers.length){
+      callToast('Produto adicionado com sucesso', false)
+    }else{
+      callToast('Adicione um consumidor', true)
+      setProducts([])
+
+    }
 
     reset();
   };
@@ -63,8 +68,12 @@ export const FormProducts = () => {
   };
 
   const calc = () => {
-    splitBill();
-    navigate('/waiter');
+    if(products.length){
+      splitBill();
+      navigate('/waiter');
+    }else{
+      callToast('Preencha ao menos um produto', true)
+    }
   };
 
   return (
