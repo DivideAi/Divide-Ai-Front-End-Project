@@ -4,15 +4,6 @@ import { Main } from '../../styles/main';
 export const StyledHomePage = styled(Main)`
   display: flex;
   flex-direction: column;
-  
-
-  @media (min-width: 640px) {
-    border: 2px solid #3295ad;
-    border-radius: 10px;
-    padding: 3rem;
-    width: 60%;
-    margin: 2rem auto;
-  }
 
   img {
     width: 220px;
@@ -34,7 +25,8 @@ export const StyledHomePage = styled(Main)`
     align-items: center;
     justify-self: center;
     margin: 20px auto;
-    width: 320px;
+    max-width: 320px;
+    width: 100%;
     height: 45px;
     color: #3295ad;
     background-color: var(--grey-0);
