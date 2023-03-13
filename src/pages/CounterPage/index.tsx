@@ -7,15 +7,19 @@ import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { StyledMain } from './styles'
 import { Navbar } from '../../components/Navbar'
+import { isLogged } from '../../scripts/localStorage'
 
 export const CounterPage = () =>{
     const navigate = useNavigate();
     const { setUser, clearProducts } = useContext(ContextUser);
     const [counter, setCounter] = useState(2); 
 
-    useEffect(() =>{
+    useEffect(() => {
+      if (!isLogged()) {
+          navigate(-1);
+      }
       clearProducts()
-    }, [])
+  }, [])
 
     const counterPeople = () =>{
         const arrayUser = []

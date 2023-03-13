@@ -21,6 +21,9 @@ export const StyledMain = styled(Main)`
       flex-direction: column;
       gap: 1rem;
       width: 100%;
+
+      @media(min-width: 640px){
+        max-width: 320px;
     }
   }
   div {
@@ -60,4 +63,5 @@ export const StyledMain = styled(Main)`
       }
     }
   }
+}
 `;

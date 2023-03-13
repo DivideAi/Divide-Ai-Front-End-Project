@@ -35,4 +35,10 @@ export const StyledMain = styled(Main)`
       font-size: 89px;
     }
   }
+
+  @media(min-width: 640px){
+    button{
+      max-width: 320px;
+    }
+  }
 `;
