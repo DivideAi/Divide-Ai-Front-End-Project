@@ -41,14 +41,12 @@ export const Global = createGlobalStyle`
   p{
     font-weight: 600;
     color: var(--grey-0);
-    font-size: 16px;
     line-height: 20px;
   }
 
   h1{
     font-weight: 600;
     color: var(--grey-0);
-    font-size: 50px;
     line-height: 61px;
   }
 
