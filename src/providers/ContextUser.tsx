@@ -139,8 +139,6 @@ export const UserProvider = ({ children }: iUserChildren) => {
     const partialServiceFee = serviceFee / tableConsumers.length;
     setAmountBill(amountBill + serviceFee);
 
-    console.log(serviceFee);
-
     const updatedTableConsumers = tableConsumers.map((currentConsumer) => {
       currentConsumer.billPart = currentConsumer.billPart + partialServiceFee;
       return currentConsumer;
@@ -167,7 +165,6 @@ export const UserProvider = ({ children }: iUserChildren) => {
   const splitBill = () => {
     products.forEach((product) => {
       const currentValue = product.price / product.consumers.length;
-      console.log('context ==>', product);
 
       product.consumers.forEach((consumer) =>
         updateConsumedProducts(currentValue, product, consumer)

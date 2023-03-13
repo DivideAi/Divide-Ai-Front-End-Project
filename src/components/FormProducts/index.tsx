@@ -86,7 +86,6 @@ export const FormProducts = () => {
       <ul>
         <UserSelect all allFunction={addAll} allConsumers={consumers}/>
         {tableConsumers.map((element) => {
-          console.log(tableConsumers)
           return (
             <UserSelect  allFunction={addAll} userFunction={addClient} consumer={element} key={crypto.randomUUID()} allConsumers={consumers}/>
           );
