@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { ContextUser } from '../../providers/ContextUser';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../../components/Navbar';
+import { callToast } from '../../scripts/Toast';
 
 export const NamePeople = () =>{
     
@@ -22,9 +23,14 @@ export const NamePeople = () =>{
         }))
 
         setClients(arrayNamePeople) 
-        navigate('/shareproducts')
+
+          if(arrayNamePeople.length === user.length){
+            navigate('/shareproducts')
+          } else {
+            callToast('Preencha os nomes de todos dos usuários', true)
+          }
+      }
  
-     }
 
     const backToCounter = () =>{
         navigate('/counterpage')

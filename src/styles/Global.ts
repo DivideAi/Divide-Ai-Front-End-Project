@@ -21,7 +21,6 @@ export const Global = createGlobalStyle`
     border: none;
     list-style: none;
     text-decoration: none;
-    background-color: var(--primary); ////////////////////////////////////////////////////// remover
     font-family: 'Montserrat';
   }
 
@@ -33,7 +32,7 @@ export const Global = createGlobalStyle`
     cursor: pointer;
     background-color: var(--grey-0);
     border-radius: 10px;
-    color: #3295AD;
+    color: var(--primary-50);
     font-weight: 700;
     padding: 1rem 5rem;
   }

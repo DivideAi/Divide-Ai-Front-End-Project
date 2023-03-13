@@ -16,9 +16,7 @@ export const Register = () =>{
     
     return(
         <StyledRegisterPage>
-            <Header/>
-            <h1>Cadastro</h1>
-            <p>Vamos lá? Preencha todos os campos abaixo. É bem rapidinho, prometo!</p>
+            <Header title='Cadastro' description='Vamos lá? Preencha todos os campos abaixo. É bem rapidinho, prometo!'/>
             <RegisterForm/>
         </StyledRegisterPage>
     )
