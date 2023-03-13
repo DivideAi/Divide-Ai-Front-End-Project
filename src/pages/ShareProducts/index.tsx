@@ -20,10 +20,7 @@ export const ShareProducts = () =>{
       <>
       <Navbar logout/>
         <StyledMain>
-            <Header/>
-            <div className='sub-title'>
-                <p>Ótimo, agora eu preciso que você me informe os itens consumidos e quais pessoas consumiram</p>
-            </div>
+            <Header description='Ótimo, agora eu preciso que você me informe os itens consumidos e quais pessoas consumiram'/>
             <FormProducts/>
         </StyledMain>
       </>

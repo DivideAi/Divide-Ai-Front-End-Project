@@ -31,13 +31,14 @@ interface iUserProviderChildren {
   setUser: React.Dispatch<React.SetStateAction<number[]>>;
   tableConsumers: iTableConsumers[];
   user: number[];
+  clearProducts: () => void;
 }
 
 interface iUserChildren {
   children: React.ReactNode;
 }
 
-interface iTableConsumers {
+export interface iTableConsumers {
   avatar: string;
   billPart: number;
   name: string;
@@ -194,6 +195,12 @@ export const UserProvider = ({ children }: iUserChildren) => {
     setTableConsumers(updatedConsumers);
   };
 
+  const clearProducts = () =>{
+    setTableConsumers([])
+    setProducts([])
+
+  }
+
   return (
     <ContextUser.Provider
       value={{
@@ -210,6 +217,7 @@ export const UserProvider = ({ children }: iUserChildren) => {
         setUser,
         splitBill,
         tableConsumers,
+        clearProducts,
         user,
       }}
     >

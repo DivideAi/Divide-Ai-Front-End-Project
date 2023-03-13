@@ -1,16 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Header } from '../../components/Header'
 import Left from '../../assets/left.png'
 import Right from '../../assets/rigth.png'
 import { ContextUser } from '../../providers/ContextUser'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { StyledMain } from './styles'
 import { Navbar } from '../../components/Navbar'
 
 export const CounterPage = () =>{
     const navigate = useNavigate();
-    const { setUser } = useContext(ContextUser);
-    const [counter, setCounter] = useState(0); 
+    const { setUser, clearProducts } = useContext(ContextUser);
+    const [counter, setCounter] = useState(2); 
+
+    useEffect(() =>{
+      clearProducts()
+    }, [])
 
     const counterPeople = () =>{
         const arrayUser = []
@@ -27,18 +32,18 @@ export const CounterPage = () =>{
         }
     }
     const subPeople = () =>{
-        if(counter > 0){
+        if(counter > 2){
             setCounter(counter - 1)
         }
     }
+
 
     return(
       <>
         <Navbar logout/>
         <StyledMain>
-            <Header/>
+            <Header description='Para começar, eu preciso saber o número de pessoas da mesa:'/>
             <div className='container-counter'>
-                <p>Para começar, eu preciso saber o número de pessoas da mesa:</p>
                 <div className='counter'>
                     <img src={Left} alt="Left" onClick={()=> subPeople()}/>
                     <h1>{counter}</h1>

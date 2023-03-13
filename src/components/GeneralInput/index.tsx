@@ -13,7 +13,7 @@ export const GeneralInput = ({ placeholder, register, type, error }: iInputProps
 
     return(
         <>
-            <StyledInput placeholder={placeholder} {...register} type={type} name={placeholder}/>
+            <StyledInput placeholder={placeholder} {...register} type={type}/>
         {error && (
             <span className='Body-small'>{error.message}</span>
           )}

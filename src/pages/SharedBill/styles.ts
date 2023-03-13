@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Main } from "../../styles/main";
 
-export const SharedBillMain = styled.main`
+export const SharedBillMain = styled(Main)`
   & {
     display: flex;
     align-items: center;

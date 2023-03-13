@@ -48,27 +48,6 @@ export const StyledForm = styled.form`
     flex-wrap: wrap;
     gap: 1rem;
     width: 100%;
-
-    li {
-      border: solid 2px var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.5rem;
-
-      padding: 10px;
-      width: 30%;
-      cursor: pointer;
-      :hover {
-        border-color: var(--grey-0);
-      }
-
-      img {
-        width: 50px;
-        height: 50px;
-      }
-    }
   }
 
   .buttons {

@@ -20,9 +20,9 @@ export const SharedBill = () => {
     <>
       <Navbar logout />
       <SharedBillMain>
-        <Header />
+        <Header description='Prontinho, abaixo está o valor total da conta e também o valor de cada pessoa'/>
         <GroupList />
-        <NextButton to={'/'}>Nova divisão</NextButton>
+        <NextButton to={'/counterpage'}>Nova divisão</NextButton>
       </SharedBillMain>
     </>
   );

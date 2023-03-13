@@ -4,8 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useContext, useState } from 'react';
 import { ContextUser } from '../../providers/ContextUser';
-import AllPeople from '../../assets/allpeople.png';
+// import AllPeople from '../../assets/allpeople.png';
 import { useNavigate } from 'react-router-dom';
+import { UserSelect } from './UserSelect';
+import { callToast } from '../../scripts/Toast';
 
 export interface iProducts {
   name: string;
@@ -39,6 +41,7 @@ export const FormProducts = () => {
     const newData = { ...data, consumers: consumers };
     setProducts([...products, newData]);
     setConsumers([]);
+    callToast('Produto adicionado com sucesso', false)
 
     reset();
   };
@@ -81,17 +84,11 @@ export const FormProducts = () => {
         ) : null}
       </div>
       <ul>
-        <li onClick={addAll}>
-          <img src={AllPeople} alt='Avatar1' />
-          <p>Todos</p>
-        </li>
+        <UserSelect all allFunction={addAll} allConsumers={consumers}/>
         {tableConsumers.map((element) => {
-          console.log(tableConsumers);
+          console.log(tableConsumers)
           return (
-            <li key={element.name} onClick={() => addClient(element.name)}>
-              <img src={element.avatar} alt='AvatarClient' />
-              <p>{element.name}</p>
-            </li>
+            <UserSelect  allFunction={addAll} userFunction={addClient} consumer={element} key={crypto.randomUUID()} allConsumers={consumers}/>
           );
         })}
       </ul>

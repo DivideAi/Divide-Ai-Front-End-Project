@@ -14,23 +14,25 @@ export const StyledMain = styled(Main)`
     justify-content: center;
     flex-direction: column;
     gap: 3rem;
+    width: 100%;
 
     .buttons {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      width: 100%;
     }
   }
   div {
     text-align: center;
-    padding: 1rem 5rem;
   }
 
   ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     width: 100%;
+    justify-items: center;
   }
 
   li {

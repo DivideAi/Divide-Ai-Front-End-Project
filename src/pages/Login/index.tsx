@@ -16,7 +16,7 @@ export const Login = () =>{
 
     return(
         <StyledLoginPage>
-            <Header description='Agora é só preencher os dados e dividir sua conta!' title='Login'/>
+            <Header title='Login' description='Agora é só preencher os dados e dividir sua conta!'/>
             <LoginForm/>
         </StyledLoginPage>
     )
